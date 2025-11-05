@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=4 uid="uid://bwvxjvdcb0j4"]
+[gd_scene load_steps=6 format=4 uid="uid://bwvxjvdcb0j4"]
 
 [ext_resource type="TileSet" uid="uid://bemgd3w7oa23h" path="res://Assets/Tilesets/TileSet.tres" id="1_4hvuo"]
 [ext_resource type="PackedScene" uid="uid://bo0pwsa6hw5ue" path="res://Scenes/player.tscn" id="1_vly50"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_lyd6k"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_y4dr7"]
+
+[sub_resource type="Resource" id="Resource_didp7"]
+script = ExtResource("4_y4dr7")
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,6 +22,7 @@ tile_set = ExtResource("1_4hvuo")
 [node name="Player" parent="." instance=ExtResource("1_vly50")]
 position = Vector2(0, -18)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1, -25)
-zoom = Vector2(3.81, 3.81)
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("3_lyd6k")
+tween_resource = SubResource("Resource_didp7")
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
