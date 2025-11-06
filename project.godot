@@ -30,7 +30,7 @@ project/assembly_name="New Game Project"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/project-time-tracker/plugin.cfg")
 
 [input]
 
@@ -80,6 +80,12 @@ Ladder={
 
 2d/default_gravity=1960.0
 common/physics_interpolation=true
+
+[project_time_traker]
+
+sections/show_sections=true
+sections/show_graphs=true
+afk/afk_timer=300
 
 [rendering]
 
