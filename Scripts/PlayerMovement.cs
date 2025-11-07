@@ -65,7 +65,7 @@ public partial class PlayerMovement : CharacterBody2D
 		if (TML.Name == "EffectorsLayer")
 		{
 			Vector2 velocity = Velocity;
-			velocity.Y -= 1000;
+			velocity.Y -= 800;
 			Velocity = velocity;
 		}
 	}
