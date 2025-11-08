@@ -8,12 +8,14 @@ public partial class PlayerMovement : CharacterBody2D
 	private float speed = 200.0f;
 	private float jumpVelocity = -500.0f;
 	private AnimatedSprite2D as2d;
+	private AudioStreamPlayer2D jumpAudioPlayer;
 
 	private bool allowClimb;
 
 	public override void _Ready()
 	{
 		as2d = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		jumpAudioPlayer = GetNode<AudioStreamPlayer2D>("JumpAudioPlayer");
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -31,6 +33,10 @@ public partial class PlayerMovement : CharacterBody2D
 		if (Input.IsActionJustPressed("Jump") && IsOnFloor())
 		{
 			velocity.Y = jumpVelocity;
+			if (allowClimb == false)
+			{
+				jumpAudioPlayer.Play();
+			}
 		}
 
 		// Moving
@@ -53,6 +59,8 @@ public partial class PlayerMovement : CharacterBody2D
 		{
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, speed);
 		}
+		
+		HandleAnimations(direction);
 		
 		Velocity = velocity;
 		MoveAndSlide();
@@ -85,14 +93,32 @@ public partial class PlayerMovement : CharacterBody2D
 	
 	private void FlipCharacter(Vector2 direction)
 	{
-		if (MathF.Sign(direction.X) == 1)
+		if (MathF.Sign(direction.X) > 0)
 		{
 			as2d.FlipH = false;
 		}
-		else
+		else if (MathF.Sign(direction.X) < 0)
 		{
 			as2d.FlipH = true;
 		}
 	}
 
+	private void HandleAnimations(Vector2 direction)
+	{
+		if (IsOnFloor() || allowClimb)
+		{
+			if (direction.X == 0)
+			{
+				as2d.Animation = "Idle";
+			}
+			else
+			{
+				as2d.Animation = "Run";
+			}
+		}
+		else
+		{
+			as2d.Animation = "Jump";
+		}
+	}
 }
