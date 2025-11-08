@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_y4dr7"]
 [ext_resource type="TileSet" uid="uid://cqu5e3jgxli3s" path="res://Assets/Tilesets/Decorations.tres" id="4_4iphx"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_y4dr7"]
-[ext_resource type="PackedScene" uid="uid://b0t6jyejvuoum" path="res://Scenes/collectible.tscn" id="10_bs12r"]
+[ext_resource type="PackedScene" uid="uid://b0t6jyejvuoum" path="res://Scenes/collectible_flower.tscn" id="10_bs12r"]
 
 [sub_resource type="Resource" id="Resource_didp7"]
 script = ExtResource("4_y4dr7")
@@ -76,5 +76,5 @@ limit_target = NodePath("../../Background Layers/PlatformLayer")
 limit_margin = Vector4i(25, 0, 0, 30)
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
-[node name="Collectible" parent="." instance=ExtResource("10_bs12r")]
-position = Vector2(104, -83)
+[node name="Collectible_flower" parent="." instance=ExtResource("10_bs12r")]
+position = Vector2(304, -334)
