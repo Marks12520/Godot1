@@ -1,8 +1,7 @@
 using Godot;
 using System;
+using System.Text.RegularExpressions;
 using PhantomCamera;
-using System.ComponentModel;
-using System.Diagnostics;
 
 public partial class PlayerMovement : CharacterBody2D
 {
@@ -11,12 +10,17 @@ public partial class PlayerMovement : CharacterBody2D
 	private float bounceAmount = 900.0f;
 	
 	private AnimatedSprite2D as2d;
-	
 	private AudioStreamPlayer2D jumpAudioPlayer;
 	private CpuParticles2D deathParticles;
 	private Timer deathTimer;
 	private Timer idleTimer;
+	private Timer levelTransitionTimer;
+	
 	[Export] private Node2D idleCamera;
+
+	private string currentScene;
+	private int currentSceneNum;
+	private string nextScenePath;
 
 	private bool allowClimb;
 	private bool isDead;
@@ -28,6 +32,9 @@ public partial class PlayerMovement : CharacterBody2D
 		deathParticles = GetNode<CpuParticles2D>("DeathParticles");
 		deathTimer = GetNode<Timer>("DeathTimer");
 		idleTimer = GetNode<Timer>("IdleTimer");
+		currentScene = GetTree().CurrentScene.Name;
+		currentSceneNum = int.Parse(Regex.Match(currentScene, @"\d+").Value);
+		levelTransitionTimer = GetNode<Timer>("LevelTransitionTimer");
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -82,14 +89,13 @@ public partial class PlayerMovement : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
-	
+
 	private void _on_area_2d_body_entered(TileMapLayer TML)
 	{
 		if (TML.Name == "LadderLayer") {allowClimb = true;}
 		
 		if (TML.Name == "BounceLayer")
 		{
-			GD.Print("Bouncing...");
 			Vector2 velocity = Velocity;
 			velocity.Y -= bounceAmount;
 			Velocity = velocity;
@@ -114,6 +120,19 @@ public partial class PlayerMovement : CharacterBody2D
 		{
 			GD.Print("Collected coin!");
 		}
+
+		if (area.Name == "NextLevelTransition")
+		{
+			levelTransitionTimer.Start();
+			nextScenePath = "res://Scenes/level" + (currentSceneNum + 1) + ".tscn";
+			//TODO fade animation
+		}
+		else if (area.Name == "PreviousLevelTransition" && currentSceneNum != 1)
+		{
+			levelTransitionTimer.Start();
+			nextScenePath = "res://Scenes/level" + (currentSceneNum - 1) + ".tscn";
+			//TODO fade animation
+		}
 	}
 
 	private void _on_death_timer_timeout()
@@ -125,6 +144,11 @@ public partial class PlayerMovement : CharacterBody2D
 	{
 		GD.Print("Player is idle");
 		idleCamera.AsPhantomCamera2D().Priority = 2;
+	}
+
+	private void _on_level_transition_timer_timeout()
+	{
+		GetTree().ChangeSceneToFile(nextScenePath);
 	}
 	
 	private void FlipCharacter(Vector2 direction)
