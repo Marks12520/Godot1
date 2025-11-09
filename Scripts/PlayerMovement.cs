@@ -8,6 +8,7 @@ public partial class PlayerMovement : CharacterBody2D
 {
 	private float speed = 200.0f;
 	private float jumpVelocity = -500.0f;
+	private float bounceAmount = 900.0f;
 	
 	private AnimatedSprite2D as2d;
 	
@@ -86,10 +87,11 @@ public partial class PlayerMovement : CharacterBody2D
 	{
 		if (TML.Name == "LadderLayer") {allowClimb = true;}
 		
-		if (TML.Name == "EffectorsLayer")
+		if (TML.Name == "BounceLayer")
 		{
+			GD.Print("Bouncing...");
 			Vector2 velocity = Velocity;
-			velocity.Y -= 850;
+			velocity.Y -= bounceAmount;
 			Velocity = velocity;
 		}
 
