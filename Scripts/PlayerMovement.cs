@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using PhantomCamera;
 using System.ComponentModel;
 using System.Diagnostics;
 
@@ -13,6 +14,8 @@ public partial class PlayerMovement : CharacterBody2D
 	private AudioStreamPlayer2D jumpAudioPlayer;
 	private CpuParticles2D deathParticles;
 	private Timer deathTimer;
+	private PhantomCamera2D idleCamera;
+	private Timer idleTimer;
 
 	private bool allowClimb;
 	private bool isDead;
@@ -23,6 +26,7 @@ public partial class PlayerMovement : CharacterBody2D
 		jumpAudioPlayer = GetNode<AudioStreamPlayer2D>("JumpAudioPlayer");
 		deathParticles = GetNode<CpuParticles2D>("DeathParticles");
 		deathTimer = GetNode<Timer>("DeathTimer");
+		idleTimer = GetNode<Timer>("IdleTimer");
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -51,6 +55,7 @@ public partial class PlayerMovement : CharacterBody2D
 		{
 			velocity.X = direction.X * speed;
 			FlipCharacter(direction);
+			idleTimer.Start();
 		}
 		else
 		{
@@ -107,8 +112,13 @@ public partial class PlayerMovement : CharacterBody2D
 
 	private void _on_death_timer_timeout()
 	{
-		GD.Print("Restarting level...");
 		GetTree().ReloadCurrentScene();
+	}
+
+	private void _on_idle_timer_timeout()
+	{
+		GD.Print("Player is idle");
+		idleCamera.Priority = 2;
 	}
 	
 	private void FlipCharacter(Vector2 direction)
