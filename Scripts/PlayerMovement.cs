@@ -103,9 +103,7 @@ public partial class PlayerMovement : CharacterBody2D
 
 		if (TML.Name == "DangersLayer")
 		{
-			isDead = true;
-			deathParticles.Emitting = true;
-			deathTimer.Start();
+			DamagePlayer(50, deathTimer);
 		}
 	}
 	
@@ -137,6 +135,7 @@ public partial class PlayerMovement : CharacterBody2D
 
 	private void _on_death_timer_timeout()
 	{
+		GD.Print("Reloading scene...");
 		GetTree().ReloadCurrentScene();
 	}
 
@@ -194,6 +193,17 @@ public partial class PlayerMovement : CharacterBody2D
 		else
 		{
 			as2d.Animation = "Death";
+		}
+	}
+
+	private void DamagePlayer(int damage, Timer timer)
+	{
+		Global.Instance.Health -= damage;
+		if (Global.Instance.Health <= 0)
+		{
+			isDead = true;
+			deathParticles.Emitting = true;
+			timer.Start();
 		}
 	}
 }
