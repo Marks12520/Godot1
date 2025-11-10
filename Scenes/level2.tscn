@@ -127,4 +127,11 @@ collision_layer = 64
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PreviousLevelTransition"]
+position = Vector2(209, -2)
 shape = SubResource("RectangleShape2D_mtqcm")
+
+[node name="NextSpawn" type="Node2D" parent="."]
+position = Vector2(54, -90)
+
+[node name="PreviousSpawn" type="Node2D" parent="."]
+position = Vector2(625, -85)
