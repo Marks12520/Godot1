@@ -56,8 +56,10 @@ tile_set = ExtResource("4_4iphx")
 tile_map_data = PackedByteArray("AAAPAO//AAABAAAAAAA=")
 tile_set = ExtResource("6_rqhku")
 
-[node name="Player" parent="." node_paths=PackedStringArray("idleCamera") instance=ExtResource("1_vly50")]
+[node name="Player" parent="." node_paths=PackedStringArray("nextSpawn", "previousSpawn", "idleCamera") instance=ExtResource("1_vly50")]
 position = Vector2(52, -85)
+nextSpawn = NodePath("../NextSpawn")
+previousSpawn = NodePath("../PreviousSpawn")
 idleCamera = NodePath("../Cameras/IdleCamera")
 
 [node name="Collectible" parent="." instance=ExtResource("10_bs12r")]
@@ -130,3 +132,9 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextLevelTransition"]
 shape = SubResource("RectangleShape2D_rqhku")
+
+[node name="NextSpawn" type="Node2D" parent="."]
+position = Vector2(51, -86)
+
+[node name="PreviousSpawn" type="Node2D" parent="."]
+position = Vector2(749, -87)

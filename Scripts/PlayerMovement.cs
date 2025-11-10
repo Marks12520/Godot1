@@ -16,11 +16,14 @@ public partial class PlayerMovement : CharacterBody2D
 	private Timer idleTimer;
 	private Timer levelTransitionTimer;
 	
+	[Export] private Node2D nextSpawn;
+	[Export] private Node2D previousSpawn;
 	[Export] private Node2D idleCamera;
 
 	private string currentScene;
 	private int currentSceneNum;
 	private string nextScenePath;
+	private int lastScene;
 
 	private bool allowClimb;
 	private bool isDead;
@@ -35,6 +38,16 @@ public partial class PlayerMovement : CharacterBody2D
 		currentScene = GetTree().CurrentScene.Name;
 		currentSceneNum = int.Parse(Regex.Match(currentScene, @"\d+").Value);
 		levelTransitionTimer = GetNode<Timer>("LevelTransitionTimer");
+		lastScene = Global.Instance.LastScene;
+
+		if (Global.Instance.LastScene > currentSceneNum)
+		{
+			Position = previousSpawn.Position;
+		}
+		else if (Global.Instance.LastScene < currentSceneNum)
+		{
+			Position = nextSpawn.Position;
+		}
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -122,12 +135,14 @@ public partial class PlayerMovement : CharacterBody2D
 		if (area.Name == "NextLevelTransition")
 		{
 			levelTransitionTimer.Start();
+			Global.Instance.lastScene = currentSceneNum;
 			nextScenePath = "res://Scenes/level" + (currentSceneNum + 1) + ".tscn";
 			//TODO fade animation
 		}
 		else if (area.Name == "PreviousLevelTransition" && currentSceneNum != 1)
 		{
 			levelTransitionTimer.Start();
+			Global.Instance.lastScene = currentSceneNum;
 			nextScenePath = "res://Scenes/level" + (currentSceneNum - 1) + ".tscn";
 			//TODO fade animation
 		}
