@@ -40,6 +40,7 @@ public partial class PlayerMovement : CharacterBody2D
 		levelTransitionTimer = GetNode<Timer>("LevelTransitionTimer");
 		lastScene = Global.Instance.LastScene;
 
+		//TODO maybe fix this code
 		if (Global.Instance.LastScene > currentSceneNum)
 		{
 			Position = previousSpawn.Position;
