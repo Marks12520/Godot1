@@ -16,5 +16,11 @@ public partial class Collectible : Area2D
     {
         particles.Emitting = true;
         sprite.Hide();
+        Monitorable = false;
+    }
+
+    private void _on_cpu_particles_2d_finished()
+    {
+        QueueFree();
     }
 }

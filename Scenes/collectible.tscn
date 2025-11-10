@@ -99,7 +99,7 @@ animations = [{
 radius = 17.029387
 
 [sub_resource type="Curve" id="Curve_athsx"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.056179762), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_7xeth"]
@@ -124,16 +124,14 @@ shape = SubResource("CircleShape2D_4n71g")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 100
-lifetime = 0.7
 one_shot = true
-speed_scale = 1.2
 explosiveness = 1.0
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 40.0
 initial_velocity_max = 60.0
-scale_amount_min = 3.0
-scale_amount_max = 5.0
+scale_amount_min = 4.0
+scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_athsx")
 color = Color(0.81063855, 0.8090902, 3.85046e-07, 1)
 hue_variation_min = -0.1
@@ -141,3 +139,4 @@ hue_variation_max = 0.1
 hue_variation_curve = SubResource("Curve_7xeth")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

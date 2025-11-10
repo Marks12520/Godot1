@@ -301,6 +301,7 @@ one_shot = true
 autostart = true
 
 [node name="LevelTransitionTimer" type="Timer" parent="."]
+wait_time = 0.001
 one_shot = true
 
 [connection signal="area_entered" from="PlayerArea" to="." method="_on_area_2d_area_entered"]
