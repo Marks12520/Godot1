@@ -7,4 +7,9 @@ public partial class StartMenu : Control
 	{
 		GetTree().ChangeSceneToFile("res://Scenes/level1.tscn");
 	}
+
+	private void _on_quit_pressed()
+	{
+		GetTree().Quit();
+	}
 }
