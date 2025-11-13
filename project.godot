@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Global="*res://Global.cs"
+BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 
 [display]
 
@@ -31,7 +32,7 @@ project/assembly_name="New Game Project"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/project_time_tracker/plugin.cfg")
+enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg", "res://addons/better-terrain/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/project_time_tracker/plugin.cfg")
 
 [input]
 
