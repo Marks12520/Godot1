@@ -7,7 +7,7 @@ public partial class Teleporter : Node2D
     private Area2D outputArea;
     private Timer cooldownTimer;
 
-    [Export] public Vector2 exitPosition;
+    [Export] public Vector2 ExitPosition;
 
     private bool hasTeleported;
     
@@ -17,7 +17,7 @@ public partial class Teleporter : Node2D
         outputArea = GetNode<Area2D>("OutputArea");
         cooldownTimer = GetNode<Timer>("CooldownTimer");
         
-        outputArea.GlobalPosition = exitPosition;
+        outputArea.GlobalPosition = ExitPosition;
     }
     
     private void _on_input_area_body_entered(Node2D body)
