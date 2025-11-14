@@ -242,10 +242,11 @@ shape = SubResource("RectangleShape2D_cx2lq")
 [node name="InputAnimatedSprite2D" type="AnimatedSprite2D" parent="InputArea"]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_mrtqa")
-animation = &"Recharging"
+animation = &"Standby"
 autoplay = "Standby"
-frame = 7
-frame_progress = 0.5973344
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="InputArea"]
+amount = 100
 
 [node name="OutputArea" type="Area2D" parent="."]
 position = Vector2(71, 0)
@@ -259,7 +260,7 @@ shape = SubResource("RectangleShape2D_cx2lq")
 [node name="OutputAnimatedSprite2D" type="AnimatedSprite2D" parent="OutputArea"]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_2aurt")
-animation = &"Recharging"
+animation = &"Standby"
 autoplay = "Standby"
 
 [node name="CooldownTimer" type="Timer" parent="."]
