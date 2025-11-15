@@ -278,6 +278,16 @@ texture_region_size = Vector2i(32, 32)
 &"symmetry": 0,
 &"type": 0
 }
+6:8/0 = 0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -14, 16, -14, 16, -8, -16, -8)
+6:8/0/physics_layer_0/polygon_0/one_way = true
+6:8/0/metadata/_better_terrain = {
+0: [0],
+3: [0],
+7: [0],
+8: [0],
+&"type": 1
+}
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -289,6 +299,8 @@ metadata/_better_terrain = {
 &"path": "res://addons/better-terrain/icons/Decoration.svg"
 }],
 &"terrains": [["Land", Color(1, 0, 0, 1), 0, [], {
+&"path": ""
+}], ["Oneway", Color(0.52470666, 0.7508351, 0.82176393, 1), 0, [], {
 &"path": ""
 }]],
 &"version": "0.2"
