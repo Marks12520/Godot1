@@ -31,6 +31,7 @@ size = Vector2(39, 63.5)
 [node name="TilemapLayers" type="Node" parent="."]
 
 [node name="Parallax2D" type="Parallax2D" parent="TilemapLayers"]
+top_level = true
 scroll_scale = Vector2(0.9, 0.9)
 
 [node name="BackgroundLayer" type="TileMapLayer" parent="TilemapLayers/Parallax2D"]
