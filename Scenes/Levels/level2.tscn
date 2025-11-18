@@ -1,23 +1,24 @@
-[gd_scene load_steps=15 format=4 uid="uid://0827xqca2ki0"]
+[gd_scene load_steps=16 format=4 uid="uid://0827xqca2ki0"]
 
-[ext_resource type="TileSet" uid="uid://pqkqv44ukoj6" path="res://Assets/Tilesets/Background.tres" id="1_mtqcm"]
-[ext_resource type="TileSet" uid="uid://bemgd3w7oa23h" path="res://Assets/Tilesets/Platform.tres" id="2_mmf1u"]
-[ext_resource type="TileSet" uid="uid://m5rkg0o30k4y" path="res://Assets/Tilesets/Effectors.tres" id="3_vn460"]
-[ext_resource type="TileSet" uid="uid://dr2h5xnel4dks" path="res://Assets/Tilesets/Ladder.tres" id="4_r8hce"]
-[ext_resource type="TileSet" uid="uid://cqu5e3jgxli3s" path="res://Assets/Tilesets/Decorations.tres" id="5_ca0bt"]
-[ext_resource type="TileSet" uid="uid://bleedx7bujs2p" path="res://Assets/Tilesets/Dangers.tres" id="6_yj6rp"]
-[ext_resource type="PackedScene" uid="uid://bo0pwsa6hw5ue" path="res://Scenes/player.tscn" id="7_orbd0"]
-[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="9_051s1"]
-[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_in4v8"]
-[ext_resource type="PackedScene" uid="uid://sejn5li676gi" path="res://Scenes/game_menu.tscn" id="11_mtqcm"]
-[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_mu7lp"]
+[ext_resource type="TileSet" uid="uid://pqkqv44ukoj6" path="res://Assets/Tilesets/Background.tres" id="1_pyd1a"]
+[ext_resource type="TileSet" uid="uid://bemgd3w7oa23h" path="res://Assets/Tilesets/Platform.tres" id="2_o7bax"]
+[ext_resource type="TileSet" uid="uid://m5rkg0o30k4y" path="res://Assets/Tilesets/Effectors.tres" id="3_flysx"]
+[ext_resource type="TileSet" uid="uid://dr2h5xnel4dks" path="res://Assets/Tilesets/Ladder.tres" id="4_0jhw5"]
+[ext_resource type="TileSet" uid="uid://cqu5e3jgxli3s" path="res://Assets/Tilesets/Decorations.tres" id="5_eqosv"]
+[ext_resource type="TileSet" uid="uid://bleedx7bujs2p" path="res://Assets/Tilesets/Dangers.tres" id="6_6a7cf"]
+[ext_resource type="PackedScene" uid="uid://bo0pwsa6hw5ue" path="res://Scenes/GameObjects/player.tscn" id="7_hpjhc"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_56d2c"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_jywle"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_l1hk4"]
+[ext_resource type="PackedScene" uid="uid://sejn5li676gi" path="res://Scenes/Menus/game_menu.tscn" id="11_b2fon"]
+[ext_resource type="PackedScene" uid="uid://b0t6jyejvuoum" path="res://Scenes/GameObjects/collectible.tscn" id="12_o7bax"]
 
 [sub_resource type="Resource" id="Resource_d1mwp"]
-script = ExtResource("11_mu7lp")
+script = ExtResource("10_l1hk4")
 duration = 0.5
 
 [sub_resource type="Resource" id="Resource_rqhku"]
-script = ExtResource("11_mu7lp")
+script = ExtResource("10_l1hk4")
 duration = 5.0
 transition = 5
 metadata/_custom_type_script = "uid://8umksf8e80fw"
@@ -34,27 +35,27 @@ scroll_scale = Vector2(0.8, 0.8)
 scroll_offset = Vector2(-100, 100)
 
 [node name="BackgroundLayer" type="TileMapLayer" parent="TilemapLayers/Parallax2D"]
-tile_set = ExtResource("1_mtqcm")
+tile_set = ExtResource("1_pyd1a")
 
 [node name="PlatformLayer" type="TileMapLayer" parent="TilemapLayers"]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAABAAAAEAAAAIAAYAAAAAAAIAAAAAAAYAABAAAAMAAAAEAAIAAAAAAAQAAAAEAAIAAAAAAAUAAAAEAAIAAAAAAAYAAAAEAAIAAAAAAAcAAAAEAAIAAAACAAAAAAAAAAAAAAACAAEAAAAAAAIAAAACAAIAAAAAAAYAAAACAAMAAAAEAAIAAAACAAQAAAAEAAIAAAACAAUAAAAEAAIAAAACAAYAAAAEAAIAAAACAAcAAAAEAAIAAAD//wAAAAACAAAAAAD+/wAAAAACAAAAAAD9/wAAAAACAAAAAAD8/wAAAAACAAAAAAD7/wAAAAACAAAAAAD6/wAAAAACAAAAAAD5/wAAAAACAAAAAAD4/wAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAIAAAAAAACAAAAAAAJAAAAAAACAAAAAAAKAAAAAAACAAAAAAALAAAAAAACAAAAAAAMAAAAAAACAAAAAAANAAAAAAACAAAAAAAOAAAAAAACAAAAAAAPAAAAAAAAAAgAABD3/wAAAAACAAAAAAD2/wAAAAACAAAAAAD1/wAAAAACAAAAAAD0/wAAAAACAAAAAADz/wAAAAAAAAgAAADz////AAAEAAIAAADz//7/AAAEAAIAAADz//3/AAAEAAIAAADz//z/AAAEAAIAAADz//v/AAAEAAIAAADz//r/AAAEAAIAAADz//n/AAAEAAIAAADz//j/AAAEAAIAAADz//f/AAAEAAIAAADz//b/AAAEAAIAAADz//X/AAAEAAAAAAAPAP//AAAEAAIAAAAPAP7/AAAEAAIAAAAPAP3/AAAEAAIAAAAPAPz/AAAEAAIAAAAPAPv/AAAEAAIAAAAPAPr/AAAEAAIAAAAPAPn/AAAEAAIAAAAPAPj/AAAEAAIAAAAPAPf/AAAEAAIAAAAPAPb/AAAEAAIAAAAPAPX/AAAEAAAAAAAAAAgAAAAEAAIAAAAAAAkAAAAEAAIAAAAAAAoAAAAEAAIAAAAAAAsAAAAEAAIAAAAAAAwAAAAEAAQAAAACAAgAAAAEAAIAAAACAAkAAAAEAAIAAAACAAoAAAAEAAIAAAACAAsAAAAEAAIAAAACAAwAAAAEAAQAAAD//wEAAAACAAIAAAD+/wEAAAACAAIAAAD9/wEAAAACAAIAAAD8/wEAAAACAAIAAAD7/wEAAAACAAIAAAD6/wEAAAACAAIAAAD5/wEAAAACAAIAAAD4/wEAAAACAAIAAAD3/wEAAAACAAIAAAD2/wEAAAACAAIAAAD1/wEAAAACAAIAAAD0/wEAAAACAAIAAADz/wEAAAAAAAIAAADz/wIAAAAAAAQAAAD//wIAAAACAAQAAAD+/wIAAAACAAQAAAD9/wIAAAACAAQAAAD8/wIAAAACAAQAAAD7/wIAAAACAAQAAAD6/wIAAAACAAQAAAD5/wIAAAACAAQAAAD4/wIAAAACAAQAAAD3/wIAAAACAAQAAAD2/wIAAAACAAQAAAD1/wIAAAACAAQAAAD0/wIAAAACAAQAAAAPAAIAAAAAAAQAABAPAAEAAAAIAAYAAAAOAAEAAAACAAIAAAANAAEAAAACAAIAAAAMAAEAAAACAAIAAAALAAEAAAACAAIAAAAKAAEAAAACAAIAAAAJAAEAAAACAAIAAAAIAAEAAAACAAIAAAAHAAEAAAACAAIAAAAGAAEAAAACAAIAAAAFAAEAAAACAAIAAAAEAAEAAAACAAIAAAADAAEAAAACAAIAAAADAAIAAAACAAQAAAANAAIAAAACAAQAAAAOAAIAAAACAAQAAAAMAAIAAAACAAQAAAALAAIAAAACAAQAAAAKAAIAAAACAAQAAAAJAAIAAAACAAQAAAAIAAIAAAACAAQAAAAHAAIAAAACAAQAAAAGAAIAAAACAAQAAAAFAAIAAAACAAQAAAAEAAIAAAACAAQAAAA=")
-tile_set = ExtResource("2_mmf1u")
+tile_set = ExtResource("2_o7bax")
 
 [node name="BounceLayer" type="TileMapLayer" parent="TilemapLayers"]
-tile_set = ExtResource("3_vn460")
+tile_set = ExtResource("3_flysx")
 
 [node name="LadderLayer" type="TileMapLayer" parent="TilemapLayers"]
 tile_map_data = PackedByteArray("AAABAAcAAgAAAAAAAAABAAYAAgAAAAAAAAABAAUAAgAAAAAAAAABAAQAAgAAAAAAAAABAAMAAgAAAAAAAAABAAIAAgAAAAAAAAABAAEAAgAAAAAAAAABAAAAAgACAAAAAAABAAgAAgAAAAAAAAABAAkAAgAAAAAAAAABAAoAAgAAAAAAAAABAAsAAgAAAAAAAAABAAwAAgAAAAAAAAA=")
-tile_set = ExtResource("4_r8hce")
+tile_set = ExtResource("4_0jhw5")
 
 [node name="DecorationsLayer" type="TileMapLayer" parent="TilemapLayers"]
-tile_set = ExtResource("5_ca0bt")
+tile_set = ExtResource("5_eqosv")
 
 [node name="SpikesLayer" type="TileMapLayer" parent="TilemapLayers"]
 tile_map_data = PackedByteArray("AAD9////AAAAAAAAAAA=")
-tile_set = ExtResource("6_yj6rp")
+tile_set = ExtResource("6_6a7cf")
 
-[node name="Player" parent="." node_paths=PackedStringArray("nextSpawn", "previousSpawn", "idleCamera", "zoomCamera") instance=ExtResource("7_orbd0")]
+[node name="Player" parent="." node_paths=PackedStringArray("nextSpawn", "previousSpawn", "idleCamera", "zoomCamera") instance=ExtResource("7_hpjhc")]
 position = Vector2(52, -85)
 nextSpawn = NodePath("../Spawns/NextSpawn")
 previousSpawn = NodePath("../Spawns/PreviousSpawn")
@@ -77,7 +78,7 @@ editor_draw_limits = true
 [node name="PhantomCameraHost" type="Node" parent="Cameras/Camera2D"]
 process_priority = 300
 process_physics_priority = 300
-script = ExtResource("9_051s1")
+script = ExtResource("8_56d2c")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Cameras/Camera2D"]
 current = true
@@ -85,7 +86,7 @@ current = true
 [node name="NormalCamera" type="Node2D" parent="Cameras" node_paths=PackedStringArray("follow_target")]
 top_level = true
 position = Vector2(52, -109)
-script = ExtResource("10_in4v8")
+script = ExtResource("9_jywle")
 priority = 1
 follow_mode = 5
 follow_target = NodePath("../../Player")
@@ -108,7 +109,7 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 [node name="ZoomOutCamera" type="Node2D" parent="Cameras" node_paths=PackedStringArray("follow_target")]
 top_level = true
 position = Vector2(52, -85)
-script = ExtResource("10_in4v8")
+script = ExtResource("9_jywle")
 follow_mode = 5
 follow_target = NodePath("../../Player")
 zoom = Vector2(0.53, 0.53)
@@ -125,7 +126,7 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 [node name="IdleCamera" type="Node2D" parent="Cameras" node_paths=PackedStringArray("follow_target")]
 top_level = true
 position = Vector2(52, -106.525)
-script = ExtResource("10_in4v8")
+script = ExtResource("9_jywle")
 follow_mode = 5
 follow_target = NodePath("../../Player")
 zoom = Vector2(9.88, 9.88)
@@ -173,4 +174,7 @@ position = Vector2(809, -95)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GameMenu" parent="CanvasLayer" instance=ExtResource("11_mtqcm")]
+[node name="GameMenu" parent="CanvasLayer" instance=ExtResource("11_b2fon")]
+
+[node name="Collectible" parent="." instance=ExtResource("12_o7bax")]
+position = Vector2(-164, -26)

@@ -154,14 +154,14 @@ public partial class PlayerMovement : CharacterBody2D
 			
 			levelTransitionTimer.Start();
 			Global.Instance.LastScene = currentSceneNum;
-			nextScenePath = "res://Scenes/level" + (currentSceneNum + 1) + ".tscn";
+			nextScenePath = "res://Scenes/Levels/level" + (currentSceneNum + 1) + ".tscn";
 			//TODO fade animation
 		}
 		else if (area.Name == "PreviousLevelTransition" && currentSceneNum != 1)
 		{
 			levelTransitionTimer.Start();
 			Global.Instance.LastScene = currentSceneNum;
-			nextScenePath = "res://Scenes/level" + (currentSceneNum - 1) + ".tscn";
+			nextScenePath = "res://Scenes/Levels/level" + (currentSceneNum - 1) + ".tscn";
 			//TODO fade animation
 		}
 	}
