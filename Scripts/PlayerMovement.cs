@@ -7,7 +7,7 @@ public partial class PlayerMovement : CharacterBody2D
 {
 	private float speed = 200.0f;
 	private float jumpVelocity = -500.0f;
-	private float bounceAmount = 900.0f;
+	private float bounceAmount = -900.0f;
 	
 	private AnimatedSprite2D as2d;
 	private AudioStreamPlayer2D jumpAudioPlayer;
@@ -117,15 +117,7 @@ public partial class PlayerMovement : CharacterBody2D
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed("Zoom_out"))
-		{
-			zoomCamera.AsPhantomCamera2D().Priority = 3;
-		}
-
-		if (@event.IsActionReleased("Zoom_out"))
-		{
-			zoomCamera.AsPhantomCamera2D().Priority = 0;
-		}
+		
 	}
 	
 	private void _on_area_2d_body_entered(Node2D body)
@@ -135,7 +127,7 @@ public partial class PlayerMovement : CharacterBody2D
 		if (body.Name == "BounceLayer")
 		{
 			Vector2 velocity = Velocity;
-			velocity.Y -= bounceAmount;
+			velocity.Y = bounceAmount;
 			Velocity = velocity;
 		}
 

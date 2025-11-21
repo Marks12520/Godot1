@@ -10,17 +10,17 @@ public partial class Collectible : Area2D
     {
         particles = GetNode<CpuParticles2D>("CPUParticles2D");
         sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        
+        sprite.Animation = "Idle";
     }
     
     private void _on_body_entered(CharacterBody2D body)
     {
-        particles.Emitting = true;
-        sprite.Hide();
+        if (sprite.Animation != "Collected")
+        {
+            particles.Emitting = true;
+        }
+        sprite.Animation = "Collected";
         SetDeferred("monitorable", false);
-    }
-
-    private void _on_cpu_particles_2d_finished()
-    {
-        QueueFree();
     }
 }

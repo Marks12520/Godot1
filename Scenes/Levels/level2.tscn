@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_jywle"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_l1hk4"]
 [ext_resource type="PackedScene" uid="uid://sejn5li676gi" path="res://Scenes/Menus/game_menu.tscn" id="11_b2fon"]
-[ext_resource type="PackedScene" uid="uid://b0t6jyejvuoum" path="res://Scenes/GameObjects/collectible.tscn" id="12_o7bax"]
+[ext_resource type="PackedScene" uid="uid://b0t6jyejvuoum" path="res://Scenes/GameObjects/collectible1.tscn" id="12_o7bax"]
 
 [sub_resource type="Resource" id="Resource_d1mwp"]
 script = ExtResource("10_l1hk4")
@@ -70,10 +70,10 @@ physics_interpolation_mode = 1
 position = Vector2(52, -109)
 zoom = Vector2(3, 3)
 process_callback = 0
-limit_left = -401
-limit_top = -327
-limit_right = 497
-limit_bottom = 71
+limit_left = -465
+limit_top = -1206
+limit_right = 1201
+limit_bottom = -30
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Cameras/Camera2D"]
