@@ -12,6 +12,6 @@ public partial class GameMenu : Control
 	
 	public override void _Process(double delta)
 	{
-		coinLabel.Text = "Coins: " + Global.Instance.Coins;
+		coinLabel.Text = "Flowers: " + Global.Instance.Flowers;
 	}
 }

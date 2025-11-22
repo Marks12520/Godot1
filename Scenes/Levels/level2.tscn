@@ -70,10 +70,10 @@ physics_interpolation_mode = 1
 position = Vector2(52, -109)
 zoom = Vector2(3, 3)
 process_callback = 0
-limit_left = -465
-limit_top = -1206
-limit_right = 1201
-limit_bottom = -30
+limit_left = -401
+limit_top = -327
+limit_right = 497
+limit_bottom = 71
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Cameras/Camera2D"]
@@ -180,5 +180,7 @@ position = Vector2(-19, -38)
 
 [node name="GameMenu" parent="CanvasLayer" instance=ExtResource("11_b2fon")]
 
-[node name="Collectible" parent="." instance=ExtResource("12_o7bax")]
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="Flower6" parent="Collectibles" instance=ExtResource("12_o7bax")]
 position = Vector2(-164, -26)

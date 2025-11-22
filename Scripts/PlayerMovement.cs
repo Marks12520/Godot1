@@ -142,15 +142,13 @@ public partial class PlayerMovement : CharacterBody2D
 
 	private void _on_area_2d_area_entered(Area2D area)
 	{
-		if (Global.Instance.RemoveNumbers(area.Name) == "Collectible")
+		if (Global.Instance.RemoveNumbers(area.Name) == "Flower")
 		{
-			Global.Instance.Coins += 1;
+			Global.Instance.Flowers += 1;
 		}
 
 		if (area.Name == "NextLevelTransition")
 		{
-			Global.Instance.CoinsBeforeChangingLevel = Global.Instance.Coins;
-			
 			levelTransitionTimer.Start();
 			Global.Instance.LastScene = currentSceneNum;
 			nextScenePath = "res://Scenes/Levels/level" + (currentSceneNum + 1) + ".tscn";
@@ -169,7 +167,6 @@ public partial class PlayerMovement : CharacterBody2D
 	{
 		GD.Print("Reloading scene...");
 		GetTree().ReloadCurrentScene();
-		Global.Instance.Coins = Global.Instance.CoinsBeforeChangingLevel;
 	}
 
 	private void _on_idle_timer_timeout()

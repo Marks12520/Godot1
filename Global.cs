@@ -5,22 +5,25 @@ using Godot.Collections;
 
 public partial class Global : Node
 {
-    public static Global Instance { get; private set; }
+    public static Global Instance;
     
-    public int Health { get; set; }
-    public int LastScene { get; set; }
-    public int Coins { get; set; }
-    public int CoinsBeforeChangingLevel { get; set; }
-    public bool JustDied { get; set; }
-    public Dictionary<string, bool> CollectedFlowers { get; set; }
+    public int Health;
+    public int LastScene;
+    public int Flowers;
+    public bool JustDied;
+    public Dictionary<string, bool> CollectedFlowers;
 
     public override void _Ready()
     {
         Instance = this;
         Health = 100;
-        Coins = 0;
-        CoinsBeforeChangingLevel = 0;
+        Flowers = 0; 
         JustDied = false;
+
+        CollectedFlowers = new()
+        {
+            
+        };
     }
 
     public string RemoveNumbers(string text) => Regex.Replace(text, @"\d+", "");

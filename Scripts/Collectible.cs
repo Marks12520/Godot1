@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Linq;
 
 public partial class Collectible : Area2D
 {
@@ -13,6 +12,17 @@ public partial class Collectible : Area2D
         sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         
         sprite.Animation = "Idle";
+
+        if (Global.Instance.CollectedFlowers.ContainsKey(Name) == false)
+        {
+            Global.Instance.CollectedFlowers.Add(Name, false);
+        }
+        
+        if (Global.Instance.CollectedFlowers[Name])
+        {
+            sprite.Animation = "Collected";
+            SetDeferred("monitorable", false);
+        }
     }
     
     private void _on_body_entered(CharacterBody2D body)
@@ -23,6 +33,7 @@ public partial class Collectible : Area2D
         }
         sprite.Animation = "Collected";
         SetDeferred("monitorable", false);
-
+        
+        Global.Instance.CollectedFlowers[Name] = true;
     }
 }
