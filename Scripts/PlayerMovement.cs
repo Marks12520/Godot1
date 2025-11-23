@@ -217,21 +217,28 @@ public partial class PlayerMovement : CharacterBody2D
 	{
 		if (!isDead)
 		{
-			if (allowClimb && direction.Y != 0)
+			if (allowMovement)
 			{
-				as2d.Animation = "Climb";
-			}
-			else if (allowClimb && direction.Y == 0)
-			{
-				as2d.Animation = "IdleClimb";
-			}
-			else if (!allowClimb && direction.X != 0)
-			{
-				as2d.Animation = "Run";
-			}
-			else if (!IsOnFloor())
-			{
-				//as2d.Animation = "Jump";
+				if (allowClimb && direction.Y != 0)
+				{
+					as2d.Animation = "Climb";
+				}
+				else if (allowClimb && direction.Y == 0)
+				{
+					as2d.Animation = "IdleClimb";
+				}
+				else if (!allowClimb && direction.X != 0)
+				{
+					as2d.Animation = "Run";
+				}
+				else if (!IsOnFloor())
+				{
+					//as2d.Animation = "Jump";
+				}
+				else
+				{
+					as2d.Animation = "Idle";
+				}
 			}
 			else
 			{
@@ -253,5 +260,6 @@ public partial class PlayerMovement : CharacterBody2D
 		}
 		isDead = true;
 		Global.Instance.JustDied = true;
+		fadeAnimation.PlayFadeDeathAnimation();
 	}
 }

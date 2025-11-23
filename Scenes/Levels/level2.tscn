@@ -14,11 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://b0t6jyejvuoum" path="res://Scenes/GameObjects/collectible1.tscn" id="12_o7bax"]
 [ext_resource type="PackedScene" uid="uid://ww7qrrq562qc" path="res://Scenes/Menus/fade.tscn" id="13_flysx"]
 
-[sub_resource type="Resource" id="Resource_d1mwp"]
+[sub_resource type="Resource" id="Resource_flysx"]
 script = ExtResource("10_l1hk4")
 duration = 0.5
 
-[sub_resource type="Resource" id="Resource_rqhku"]
+[sub_resource type="Resource" id="Resource_0jhw5"]
 script = ExtResource("10_l1hk4")
 duration = 5.0
 transition = 5
@@ -69,13 +69,13 @@ fadeAnimation = NodePath("../CanvasLayer/Fade")
 
 [node name="Camera2D" type="Camera2D" parent="Cameras"]
 physics_interpolation_mode = 1
-position = Vector2(52, -109)
+position = Vector2(52, -85)
 zoom = Vector2(3, 3)
 process_callback = 0
 limit_left = -401
-limit_top = -327
+limit_top = -352
 limit_right = 497
-limit_bottom = 71
+limit_bottom = 116
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Cameras/Camera2D"]
@@ -88,66 +88,53 @@ current = true
 
 [node name="NormalCamera" type="Node2D" parent="Cameras" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(52, -109)
+position = Vector2(52, -85)
 script = ExtResource("9_jywle")
 priority = 1
 follow_mode = 5
 follow_target = NodePath("../../Player")
 zoom = Vector2(3, 3)
-tween_resource = SubResource("Resource_d1mwp")
+tween_resource = SubResource("Resource_flysx")
 tween_on_load = false
 follow_damping = true
-follow_damping_value = Vector2(0.3, 0.1)
+follow_damping_value = Vector2(0.3, 0.2)
 dead_zone_width = 0.134
-dead_zone_height = 0.301
+dead_zone_height = 0.134
 draw_limits = true
 limit_left = -30
 limit_top = -1220
 limit_right = 2315
 limit_bottom = -30
 limit_target = NodePath("../../TilemapLayers/PlatformLayer")
-limit_margin = Vector4i(15, 25, 15, 345)
-metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
-
-[node name="ZoomOutCamera" type="Node2D" parent="Cameras" node_paths=PackedStringArray("follow_target")]
-top_level = true
-position = Vector2(52, -85)
-script = ExtResource("9_jywle")
-follow_mode = 5
-follow_target = NodePath("../../Player")
-zoom = Vector2(0.53, 0.53)
-tween_resource = SubResource("Resource_d1mwp")
-tween_on_load = false
-follow_damping = true
-follow_damping_value = Vector2(0.3, 0.1)
-dead_zone_width = 0.134
-dead_zone_height = 0.301
-draw_limits = true
-limit_margin = Vector4i(15, 15, 15, 30)
+limit_margin = Vector4i(15, 0, 15, 300)
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="IdleCamera" type="Node2D" parent="Cameras" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(52, -106.525)
+position = Vector2(-303.834, -127.34413)
 script = ExtResource("9_jywle")
 follow_mode = 5
-follow_target = NodePath("../../Player")
+follow_target = NodePath("")
 zoom = Vector2(9.88, 9.88)
-tween_resource = SubResource("Resource_rqhku")
+tween_resource = SubResource("Resource_0jhw5")
 tween_on_load = false
 follow_offset = Vector2(0, -21.525)
 follow_damping = true
-follow_damping_value = Vector2(0.3, 0.1)
+follow_damping_value = Vector2(0.3, 0.2)
 dead_zone_width = 0.134
-dead_zone_height = 0.25
 draw_limits = true
 limit_left = -30
 limit_top = -1220
 limit_right = 2315
 limit_bottom = -30
 limit_target = NodePath("../../TilemapLayers/PlatformLayer")
-limit_margin = Vector4i(15, 25, 15, 345)
+limit_margin = Vector4i(15, 170, 15, 30)
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="Flower1" parent="Collectibles" instance=ExtResource("12_o7bax")]
+position = Vector2(-164, -26)
 
 [node name="NextLevelTransition" type="Area2D" parent="."]
 top_level = true
@@ -167,11 +154,6 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PreviousLevelTransition"]
 shape = SubResource("RectangleShape2D_rqhku")
 
-[node name="Collectibles" type="Node" parent="."]
-
-[node name="Flower1" parent="Collectibles" instance=ExtResource("12_o7bax")]
-position = Vector2(-164, -26)
-
 [node name="Spawns" type="Node" parent="."]
 
 [node name="NextSpawn" type="Node2D" parent="Spawns"]
@@ -184,7 +166,9 @@ position = Vector2(809, -95)
 position = Vector2(-19, -38)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="GameMenu" parent="CanvasLayer" instance=ExtResource("11_b2fon")]
+top_level = true
 
 [node name="Fade" parent="CanvasLayer" instance=ExtResource("13_flysx")]

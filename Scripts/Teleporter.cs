@@ -24,8 +24,11 @@ public partial class Teleporter : Node2D
     }
 
     public override void _Process(double delta)
-    { 
-        outputArea.GlobalPosition = ExitPosition.GlobalPosition;
+    {
+        if (ExitPosition != null)
+        {
+            outputArea.GlobalPosition = ExitPosition.GlobalPosition;
+        }
     }
     
     private void _on_input_area_body_entered(Node2D body)

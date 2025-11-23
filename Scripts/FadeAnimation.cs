@@ -14,4 +14,8 @@ public partial class FadeAnimation : ColorRect
     {
         animationPlayer.Play("FadeIn");
     }
+    
+    public void PlayFadeDeathAnimation(){
+        animationPlayer.Play("FadeDeath");
+    }
 }
