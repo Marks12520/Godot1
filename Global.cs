@@ -12,6 +12,7 @@ public partial class Global : Node
     public int Flowers;
     public bool JustDied;
     public Dictionary<string, bool> CollectedFlowers;
+    public Dictionary<string, bool> CompletedLevels;
 
     public override void _Ready()
     {
@@ -20,10 +21,8 @@ public partial class Global : Node
         Flowers = 0; 
         JustDied = false;
 
-        CollectedFlowers = new()
-        {
-            
-        };
+        CollectedFlowers = new(){};
+        CompletedLevels = new(){};
     }
 
     public string RemoveNumbers(string text) => Regex.Replace(text, @"\d+", "");

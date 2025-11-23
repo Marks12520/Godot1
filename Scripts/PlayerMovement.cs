@@ -14,7 +14,7 @@ public partial class PlayerMovement : CharacterBody2D
 	private CpuParticles2D deathParticles;
 	private Timer deathTimer;
 	private Timer idleTimer;
-	private Timer levelTransitionTimer;
+	private Timer fadeInTimer;
 	
 	[Export] private Node2D nextSpawn;
 	[Export] private Node2D previousSpawn;
@@ -28,6 +28,7 @@ public partial class PlayerMovement : CharacterBody2D
 	private int lastScene;
 
 	private bool allowClimb;
+	private bool allowMovement;
 	private bool isDead;
 
 	private Node healthComponent;
@@ -41,7 +42,7 @@ public partial class PlayerMovement : CharacterBody2D
 		idleTimer = GetNode<Timer>("IdleTimer");
 		currentScene = GetTree().CurrentScene.Name;
 		currentSceneNum = int.Parse(Regex.Match(currentScene, @"\d+").Value);
-		levelTransitionTimer = GetNode<Timer>("LevelTransitionTimer");
+		fadeInTimer = GetNode<Timer>("FadeInTimer");
 		lastScene = Global.Instance.LastScene;
 		healthComponent = GetNode("HealthComponent");
 
@@ -58,7 +59,13 @@ public partial class PlayerMovement : CharacterBody2D
 			Position = nextSpawn.Position;
 		}
 		
+		if (Global.Instance.CompletedLevels.ContainsKey(currentScene) == false)
+		{
+			Global.Instance.CompletedLevels.Add(currentScene, false);
+		}
+		
 		Global.Instance.JustDied = false;
+		allowMovement = false;
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -73,7 +80,7 @@ public partial class PlayerMovement : CharacterBody2D
 		}
 		
 		// Jump
-		if (Input.IsActionJustPressed("Jump") && IsOnFloor() && !isDead)
+		if (Input.IsActionJustPressed("Jump") && IsOnFloor() && !isDead && allowMovement)
 		{
 			velocity.Y = jumpVelocity;
 			if (allowClimb == false)
@@ -83,7 +90,7 @@ public partial class PlayerMovement : CharacterBody2D
 		}
 
 		// Moving
-		if (direction != Vector2.Zero && !isDead)
+		if (direction != Vector2.Zero && !isDead && allowMovement)
 		{
 			velocity.X = direction.X * speed;
 			FlipCharacter(direction);
@@ -95,7 +102,7 @@ public partial class PlayerMovement : CharacterBody2D
 		}
 		
 		// Climbing
-		if (allowClimb && direction != Vector2.Zero)
+		if (allowClimb && direction != Vector2.Zero && allowMovement)
 		{
 			velocity.Y = direction.Y * speed;
 		}
@@ -120,6 +127,7 @@ public partial class PlayerMovement : CharacterBody2D
 		if (@event.IsActionPressed("test"))
 		{
 			GD.Print(Global.Instance.CollectedFlowers);
+			GD.Print(Global.Instance.CompletedLevels);
 		}
 	}
 	
@@ -152,14 +160,16 @@ public partial class PlayerMovement : CharacterBody2D
 
 		if (area.Name == "NextLevelTransition")
 		{
-			levelTransitionTimer.Start();
+			fadeInTimer.Start();
 			Global.Instance.LastScene = currentSceneNum;
 			nextScenePath = "res://Scenes/Levels/level" + (currentSceneNum + 1) + ".tscn";
 			fadeAnimation.PlayFadeInAnimation();
+			
+			Global.Instance.CompletedLevels[currentScene] = true;
 		}
 		else if (area.Name == "PreviousLevelTransition" && currentSceneNum != 1)
 		{
-			levelTransitionTimer.Start();
+			fadeInTimer.Start();
 			Global.Instance.LastScene = currentSceneNum;
 			nextScenePath = "res://Scenes/Levels/level" + (currentSceneNum - 1) + ".tscn";
 			fadeAnimation.PlayFadeInAnimation();
@@ -178,9 +188,14 @@ public partial class PlayerMovement : CharacterBody2D
 		idleCamera.AsPhantomCamera2D().Priority = 2;
 	}
 
-	private void _on_level_transition_timer_timeout()
+	private void _on_fade_in_timer_timeout()
 	{
 		GetTree().ChangeSceneToFile(nextScenePath);
+	}
+
+	private void _on_fade_out_timer_timeout()
+	{
+		allowMovement = true;
 	}
 	
 	private void FlipCharacter(Vector2 direction)
