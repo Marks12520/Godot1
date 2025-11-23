@@ -15,9 +15,24 @@ public partial class Cameras : Node
 	{
 		followCamera = GetNode<Node2D>("FollowCamera");
 		idleCamera = GetNode<Node2D>("IdleCamera");
+
+		SetStuff();
 	}
 
 	public override void _Process(double delta)
+	{
+		if (Engine.IsEditorHint())
+		{
+			SetStuff();
+		}
+	}
+	
+	public void SetIdleCameraPriority(int priority)
+	{
+		idleCamera.AsPhantomCamera2D().Priority = priority;
+	}
+
+	private void SetStuff()
 	{
 		followCamera.AsPhantomCamera2D().FollowTarget = followTarget;
 		idleCamera.AsPhantomCamera2D().FollowTarget = followTarget;
@@ -27,10 +42,5 @@ public partial class Cameras : Node
 
 		followCamera.AsPhantomCamera2D().LimitMargin = limitOffset;
 		idleCamera.AsPhantomCamera2D().LimitMargin = limitOffset;
-	}
-	
-	public void SetIdleCameraPriority(int priority)
-	{
-		idleCamera.AsPhantomCamera2D().Priority = priority;
 	}
 }

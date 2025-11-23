@@ -45,15 +45,17 @@ tile_set = ExtResource("5_eqosv")
 tile_map_data = PackedByteArray("AAD9////AAAAAAAAAAA=")
 tile_set = ExtResource("6_6a7cf")
 
-[node name="Player" parent="." node_paths=PackedStringArray("nextSpawn", "previousSpawn", "deathSpawn", "idleCamera", "fadeAnimation") instance=ExtResource("7_hpjhc")]
+[node name="Player" parent="." node_paths=PackedStringArray("nextSpawn", "previousSpawn", "deathSpawn", "fadeAnimation") instance=ExtResource("7_hpjhc")]
 position = Vector2(52, -85)
 nextSpawn = NodePath("../Spawns/NextSpawn")
 previousSpawn = NodePath("../Spawns/PreviousSpawn")
 deathSpawn = NodePath("../Spawns/DeathSpawn")
-idleCamera = NodePath("")
 fadeAnimation = NodePath("../CanvasLayer/Fade")
 
-[node name="Cameras" parent="." instance=ExtResource("8_pyd1a")]
+[node name="Cameras" parent="." node_paths=PackedStringArray("followTarget", "limitTilemap") instance=ExtResource("8_pyd1a")]
+followTarget = NodePath("../Player")
+limitTilemap = NodePath("../TilemapLayers/PlatformLayer")
+limitOffset = Vector4i(15, 15, 15, 305)
 
 [node name="Collectibles" type="Node" parent="."]
 
