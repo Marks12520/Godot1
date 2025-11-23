@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://0827xqca2ki0"]
+[gd_scene load_steps=13 format=4 uid="uid://0827xqca2ki0"]
 
 [ext_resource type="TileSet" uid="uid://pqkqv44ukoj6" path="res://Assets/Tilesets/Background.tres" id="1_pyd1a"]
 [ext_resource type="TileSet" uid="uid://bemgd3w7oa23h" path="res://Assets/Tilesets/Platform.tres" id="2_o7bax"]
@@ -7,22 +7,10 @@
 [ext_resource type="TileSet" uid="uid://cqu5e3jgxli3s" path="res://Assets/Tilesets/Decorations.tres" id="5_eqosv"]
 [ext_resource type="TileSet" uid="uid://bleedx7bujs2p" path="res://Assets/Tilesets/Dangers.tres" id="6_6a7cf"]
 [ext_resource type="PackedScene" uid="uid://bo0pwsa6hw5ue" path="res://Scenes/GameObjects/player.tscn" id="7_hpjhc"]
-[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_56d2c"]
-[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_jywle"]
-[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_l1hk4"]
+[ext_resource type="PackedScene" uid="uid://cuf7yvljoi8on" path="res://Scenes/Levels/cameras.tscn" id="8_pyd1a"]
 [ext_resource type="PackedScene" uid="uid://sejn5li676gi" path="res://Scenes/Menus/game_menu.tscn" id="11_b2fon"]
 [ext_resource type="PackedScene" uid="uid://b0t6jyejvuoum" path="res://Scenes/GameObjects/collectible1.tscn" id="12_o7bax"]
 [ext_resource type="PackedScene" uid="uid://ww7qrrq562qc" path="res://Scenes/Menus/fade.tscn" id="13_flysx"]
-
-[sub_resource type="Resource" id="Resource_flysx"]
-script = ExtResource("10_l1hk4")
-duration = 0.5
-
-[sub_resource type="Resource" id="Resource_0jhw5"]
-script = ExtResource("10_l1hk4")
-duration = 5.0
-transition = 5
-metadata/_custom_type_script = "uid://8umksf8e80fw"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqhku"]
 size = Vector2(39, 63.5)
@@ -62,74 +50,10 @@ position = Vector2(52, -85)
 nextSpawn = NodePath("../Spawns/NextSpawn")
 previousSpawn = NodePath("../Spawns/PreviousSpawn")
 deathSpawn = NodePath("../Spawns/DeathSpawn")
-idleCamera = NodePath("../Cameras/IdleCamera")
+idleCamera = NodePath("")
 fadeAnimation = NodePath("../CanvasLayer/Fade")
 
-[node name="Cameras" type="Node" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="Cameras"]
-physics_interpolation_mode = 1
-position = Vector2(52, -85)
-zoom = Vector2(3, 3)
-process_callback = 0
-limit_left = -401
-limit_top = -352
-limit_right = 497
-limit_bottom = 116
-editor_draw_limits = true
-
-[node name="PhantomCameraHost" type="Node" parent="Cameras/Camera2D"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("8_56d2c")
-
-[node name="AudioListener2D" type="AudioListener2D" parent="Cameras/Camera2D"]
-current = true
-
-[node name="NormalCamera" type="Node2D" parent="Cameras" node_paths=PackedStringArray("follow_target")]
-top_level = true
-position = Vector2(52, -85)
-script = ExtResource("9_jywle")
-priority = 1
-follow_mode = 5
-follow_target = NodePath("../../Player")
-zoom = Vector2(3, 3)
-tween_resource = SubResource("Resource_flysx")
-tween_on_load = false
-follow_damping = true
-follow_damping_value = Vector2(0.3, 0.2)
-dead_zone_width = 0.134
-dead_zone_height = 0.134
-draw_limits = true
-limit_left = -30
-limit_top = -1220
-limit_right = 2315
-limit_bottom = -30
-limit_target = NodePath("../../TilemapLayers/PlatformLayer")
-limit_margin = Vector4i(15, 0, 15, 300)
-metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
-
-[node name="IdleCamera" type="Node2D" parent="Cameras" node_paths=PackedStringArray("follow_target")]
-top_level = true
-position = Vector2(-303.834, -127.34413)
-script = ExtResource("9_jywle")
-follow_mode = 5
-follow_target = NodePath("")
-zoom = Vector2(9.88, 9.88)
-tween_resource = SubResource("Resource_0jhw5")
-tween_on_load = false
-follow_offset = Vector2(0, -21.525)
-follow_damping = true
-follow_damping_value = Vector2(0.3, 0.2)
-dead_zone_width = 0.134
-draw_limits = true
-limit_left = -30
-limit_top = -1220
-limit_right = 2315
-limit_bottom = -30
-limit_target = NodePath("../../TilemapLayers/PlatformLayer")
-limit_margin = Vector4i(15, 170, 15, 30)
-metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+[node name="Cameras" parent="." instance=ExtResource("8_pyd1a")]
 
 [node name="Collectibles" type="Node" parent="."]
 

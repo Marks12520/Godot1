@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://cuf7yvljoi8on"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_s27va"]
+[ext_resource type="Script" uid="uid://b88v3g7pmjxc5" path="res://Scripts/Cameras.cs" id="1_s51ir"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_s51ir"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_nq5q0"]
+
+[sub_resource type="Resource" id="Resource_d1mwp"]
+script = ExtResource("3_nq5q0")
+duration = 0.5
+
+[sub_resource type="Resource" id="Resource_rqhku"]
+script = ExtResource("3_nq5q0")
+duration = 5.0
+transition = 5
+metadata/_custom_type_script = "uid://8umksf8e80fw"
+
+[node name="Cameras" type="Node"]
+script = ExtResource("1_s51ir")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-145, -210)
+zoom = Vector2(3, 3)
+editor_draw_limits = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_s27va")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
+current = true
+
+[node name="FollowCamera" type="Node2D" parent="."]
+top_level = true
+position = Vector2(-145, -210)
+script = ExtResource("2_s51ir")
+priority = 1
+follow_mode = 5
+zoom = Vector2(3, 3)
+tween_resource = SubResource("Resource_d1mwp")
+tween_on_load = false
+follow_damping = true
+follow_damping_value = Vector2(0.3, 0.2)
+dead_zone_width = 0.134
+dead_zone_height = 0.134
+draw_limits = true
+limit_margin = Vector4i(15, 170, 15, 30)
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="IdleCamera" type="Node2D" parent="."]
+top_level = true
+position = Vector2(67.16599, -127.525)
+script = ExtResource("2_s51ir")
+follow_mode = 5
+zoom = Vector2(9.88, 9.88)
+tween_resource = SubResource("Resource_rqhku")
+tween_on_load = false
+follow_offset = Vector2(0, -21.525)
+follow_damping = true
+follow_damping_value = Vector2(0.3, 0.2)
+dead_zone_width = 0.134
+dead_zone_height = 0.134
+draw_limits = true
+limit_margin = Vector4i(15, 170, 15, 30)
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"

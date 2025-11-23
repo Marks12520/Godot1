@@ -15,7 +15,6 @@ public partial class Teleporter : Node2D
     
     public override void _Ready()
     { 
-        
         inputArea = GetNode<Area2D>("InputArea");
         outputArea = GetNode<Area2D>("OutputArea");
         cooldownTimer = GetNode<Timer>("CooldownTimer");

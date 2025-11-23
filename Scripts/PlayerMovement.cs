@@ -19,8 +19,8 @@ public partial class PlayerMovement : CharacterBody2D
 	[Export] private Node2D nextSpawn;
 	[Export] private Node2D previousSpawn;
 	[Export] private Node2D deathSpawn;
-	[Export] private Node2D idleCamera;
 	[Export] private FadeAnimation fadeAnimation;
+	[Export] private Cameras cameras;
 
 	private string currentScene;
 	private int currentSceneNum;
@@ -115,7 +115,7 @@ public partial class PlayerMovement : CharacterBody2D
 		
 		if (Input.IsAnythingPressed())
 		{
-			idleCamera.AsPhantomCamera2D().Priority = 0;
+			cameras.SetIdleCameraPriority(0);
 		}
 		
 		Velocity = velocity;
@@ -185,7 +185,7 @@ public partial class PlayerMovement : CharacterBody2D
 	private void _on_idle_timer_timeout()
 	{
 		GD.Print("Player is idle");
-		idleCamera.AsPhantomCamera2D().Priority = 2;
+		cameras.SetIdleCameraPriority(2);
 	}
 
 	private void _on_fade_in_timer_timeout()
@@ -259,7 +259,6 @@ public partial class PlayerMovement : CharacterBody2D
 			deathTimer.Start();
 		}
 		isDead = true;
-		
 		Global.Instance.JustDied = true;
 		fadeAnimation.PlayFadeDeathAnimation();
 	}
