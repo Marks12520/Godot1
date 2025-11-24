@@ -2,7 +2,3 @@
 .godot/
 /android/
 .idea/
-.editorconfig
-.gitattributes
-addons/godot-vlc/
-ptt.json
