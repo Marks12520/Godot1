@@ -27,6 +27,11 @@ public partial class StartMenu : Control
 	{
 		SaveFileManager.Instance.DeleteSave();
 	}
+
+	private void _on_fullscreen_pressed()
+	{
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+	}
 	
 	//! Levels
 	private void _on_level_1_pressed()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://0827xqca2ki0"]
+[gd_scene load_steps=14 format=4 uid="uid://0827xqca2ki0"]
 
 [ext_resource type="TileSet" uid="uid://pqkqv44ukoj6" path="res://Assets/Tilesets/Background.tres" id="1_pyd1a"]
 [ext_resource type="TileSet" uid="uid://bemgd3w7oa23h" path="res://Assets/Tilesets/Platform.tres" id="2_o7bax"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bo0pwsa6hw5ue" path="res://Scenes/GameObjects/player.tscn" id="7_hpjhc"]
 [ext_resource type="PackedScene" uid="uid://cuf7yvljoi8on" path="res://Scenes/Levels/cameras.tscn" id="8_pyd1a"]
 [ext_resource type="PackedScene" uid="uid://sejn5li676gi" path="res://Scenes/Menus/game_menu.tscn" id="11_b2fon"]
+[ext_resource type="Script" uid="uid://dex837dh27ove" path="res://Scripts/GameObjects/SnowParticles.cs" id="11_pyd1a"]
 [ext_resource type="PackedScene" uid="uid://ww7qrrq562qc" path="res://Scenes/Menus/fade.tscn" id="13_flysx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqhku"]
@@ -99,13 +100,12 @@ top_level = true
 
 [node name="Fade" parent="CanvasLayer" instance=ExtResource("13_flysx")]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="SnowParticles" type="CPUParticles2D" parent="."]
 top_level = true
 position = Vector2(1769, -1369)
 rotation = -3.949538
 amount = 1000
 lifetime = 10.0
-preprocess = 10.0
 emission_shape = 3
 emission_rect_extents = Vector2(18.715, 1000)
 spread = 0.0
@@ -115,11 +115,14 @@ initial_velocity_max = 250.0
 scale_amount_min = 5.0
 scale_amount_max = 7.0
 color = Color(1, 1, 1, 0.25490198)
+script = ExtResource("11_pyd1a")
 
 [node name="SnowStart" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SnowStart"]
-position = Vector2(593, -576)
+position = Vector2(592, -463)
 shape = SubResource("RectangleShape2D_bxvyr")
+
+[connection signal="StartSnow" from="Player" to="SnowParticles" method="_on_player_start_snow"]
