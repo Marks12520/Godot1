@@ -34,7 +34,7 @@ public partial class Cameras : Node
 
 	private void SetStuff()
 	{
-		if (followTarget == null || limitTilemap == null) {return;}
+		if (followTarget == null || limitTilemap == null || followCamera == null || idleCamera == null) {return;}
 		followCamera.AsPhantomCamera2D().FollowTarget = followTarget;
 		idleCamera.AsPhantomCamera2D().FollowTarget = followTarget;
 

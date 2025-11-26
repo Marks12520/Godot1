@@ -85,7 +85,7 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.Y = jumpVelocity;
 		}
-
+		
 		// Moving
 		if (direction != Vector2.Zero && !isDead && allowMovement)
 		{
@@ -106,6 +106,12 @@ public partial class Player : CharacterBody2D
 		else if (allowClimb)
 		{
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, speed);
+		}
+		
+		// Upwards
+		if (UpwardsStream.Instance.isPlayerInStream && UpwardsStream.Instance.isStreamActive)
+		{
+			GD.Print("Going upwards");
 		}
 		
 		HandleAnimations(direction);
