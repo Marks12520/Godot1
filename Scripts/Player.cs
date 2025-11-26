@@ -13,7 +13,6 @@ public partial class Player : CharacterBody2D
 	private float bounceAmount = -900.0f;
 	
 	private AnimatedSprite2D as2d;
-	private AudioStreamPlayer2D jumpAudioPlayer;
 	private CpuParticles2D deathParticles;
 	private Timer deathTimer;
 	private Timer idleTimer;
@@ -39,7 +38,6 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		as2d = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		jumpAudioPlayer = GetNode<AudioStreamPlayer2D>("JumpAudioPlayer");
 		deathParticles = GetNode<CpuParticles2D>("DeathParticles");
 		deathTimer = GetNode<Timer>("DeathTimer");
 		idleTimer = GetNode<Timer>("IdleTimer");
@@ -86,10 +84,6 @@ public partial class Player : CharacterBody2D
 		if (Input.IsActionJustPressed("Jump") && IsOnFloor() && !isDead && allowMovement)
 		{
 			velocity.Y = jumpVelocity;
-			if (allowClimb == false)
-			{
-				jumpAudioPlayer.Play();
-			}
 		}
 
 		// Moving

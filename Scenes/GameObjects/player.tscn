@@ -1,9 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://bo0pwsa6hw5ue"]
+[gd_scene load_steps=36 format=3 uid="uid://bo0pwsa6hw5ue"]
 
 [ext_resource type="Script" uid="uid://chkfy0in270h" path="res://Scripts/Player.cs" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dxosjva2oshj" path="res://Assets/Sprites/knight.png" id="1_v0iea"]
-[ext_resource type="AudioStream" uid="uid://fgcvo1ckt5f7" path="res://Assets/SFX/30_Jump_03.wav" id="3_6t5aa"]
-[ext_resource type="PackedScene" uid="uid://fj5cyshbe8a1" path="res://Scenes/GameObjects/health_component.tscn" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://uoydc7q85s3t" path="res://Scripts/HealthComponent.cs" id="4_u74ce"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("1_v0iea")
@@ -271,9 +270,6 @@ position = Vector2(0, -3.7500002)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_cvnsp")
 
-[node name="JumpAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_6t5aa")
-
 [node name="DeathParticles" type="CPUParticles2D" parent="."]
 position = Vector2(4.9999995, 2.4999998)
 emitting = false
@@ -310,7 +306,9 @@ wait_time = 0.7
 one_shot = true
 autostart = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("4_vgqql")]
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_u74ce")
+metadata/_custom_type_script = "uid://uoydc7q85s3t"
 
 [connection signal="area_entered" from="PlayerArea" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_area_2d_body_entered"]

@@ -27,9 +27,6 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("1_s27va")
 
-[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
-current = true
-
 [node name="FollowCamera" type="Node2D" parent="."]
 top_level = true
 position = Vector2(-145, -210)
