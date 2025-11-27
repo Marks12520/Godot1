@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dksdn0ul11fnp"]
+
+[ext_resource type="Script" uid="uid://chqih6i7l3fmj" path="res://Scripts/GameObjects/AirstreamToggle.cs" id="1_35xqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0qd2"]
+
+[node name="AirstreamToggle" type="Area2D"]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource("1_35xqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l0qd2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,7 +5,7 @@ public partial class UpwardsStream : Area2D
 {
 	public static UpwardsStream Instance;
 	
-	public bool isStreamActive = true;
+	public bool isStreamActive = false;
 	public bool isPlayerInStream;
 
 	public override void _Ready()

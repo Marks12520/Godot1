@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://0827xqca2ki0"]
+[gd_scene load_steps=17 format=4 uid="uid://0827xqca2ki0"]
 
 [ext_resource type="TileSet" uid="uid://pqkqv44ukoj6" path="res://Assets/Tilesets/Background.tres" id="1_pyd1a"]
 [ext_resource type="TileSet" uid="uid://bemgd3w7oa23h" path="res://Assets/Tilesets/Platform.tres" id="2_o7bax"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://sejn5li676gi" path="res://Scenes/Menus/game_menu.tscn" id="11_b2fon"]
 [ext_resource type="Script" uid="uid://dex837dh27ove" path="res://Scripts/GameObjects/SnowParticles.cs" id="11_pyd1a"]
 [ext_resource type="Script" uid="uid://debgjobu6wwm1" path="res://Scripts/GameObjects/UpwardsStream.cs" id="12_o7bax"]
+[ext_resource type="PackedScene" uid="uid://dksdn0ul11fnp" path="res://Scenes/GameObjects/airstream_toggle.tscn" id="13_0jhw5"]
 [ext_resource type="PackedScene" uid="uid://ww7qrrq562qc" path="res://Scenes/Menus/fade.tscn" id="13_flysx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqhku"]
@@ -133,8 +134,11 @@ collision_mask = 4
 script = ExtResource("12_o7bax")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpwardsStream"]
-position = Vector2(657, -985)
+position = Vector2(898, -986)
 shape = SubResource("RectangleShape2D_pyd1a")
+
+[node name="AirstreamToggle" parent="." instance=ExtResource("13_0jhw5")]
+position = Vector2(674, -822)
 
 [connection signal="StartSnow" from="Player" to="SnowParticles" method="_on_player_start_snow"]
 [connection signal="body_entered" from="UpwardsStream" to="UpwardsStream" method="_on_body_entered"]

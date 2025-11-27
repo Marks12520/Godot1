@@ -108,7 +108,7 @@ public partial class Player : CharacterBody2D
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, speed);
 		}
 		
-		// Upwards (use getaprent.hasnode to check if the stream exists
+		// Upwards
 		if (GetParent().HasNode("UpwardsStream"))
 		{
 			if (UpwardsStream.Instance.isPlayerInStream && UpwardsStream.Instance.isStreamActive)
