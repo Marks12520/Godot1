@@ -108,12 +108,12 @@ public partial class Player : CharacterBody2D
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, speed);
 		}
 		
-		// Upwards
+		// Floating
 		if (GetParent().HasNode("UpwardsStream"))
 		{
 			if (UpwardsStream.Instance.IsPlayerInStream && UpwardsStream.Instance.IsStreamActive)
 			{
-				velocity.Y -= 50;
+				velocity.Y -= 55;
 			}
 		}
 		

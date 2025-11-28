@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brq8obvotfw76" path="res://Assets/Sprites/airtoggle.png" id="2_r1xky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyd1a"]
-size = Vector2(62, 365)
+size = Vector2(62, 957.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1rpv"]
 atlas = ExtResource("2_r1xky")

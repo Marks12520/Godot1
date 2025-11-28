@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[Tool]
 public partial class UpwardsStream : Area2D
 {
 	public static UpwardsStream Instance;
@@ -25,6 +26,16 @@ public partial class UpwardsStream : Area2D
 		flow.Position = position;
 	}
 
+	public override void _Process(double delta)
+	{
+		if (Engine.IsEditorHint())
+		{
+			Vector2 position = flow.Position;
+			position.Y = flowHeight;
+			flow.Position = position;
+		}
+	}
+	
 	private void _on_body_entered(Node2D body)
 	{
 		if (body.Name == "Player")

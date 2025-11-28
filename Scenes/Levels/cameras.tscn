@@ -19,7 +19,7 @@ script = ExtResource("1_s51ir")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-145, -210)
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2, 2)
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -33,7 +33,7 @@ position = Vector2(-145, -210)
 script = ExtResource("2_s51ir")
 priority = 1
 follow_mode = 5
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2, 2)
 tween_resource = SubResource("Resource_d1mwp")
 tween_on_load = false
 follow_offset = Vector2(0, -100)
