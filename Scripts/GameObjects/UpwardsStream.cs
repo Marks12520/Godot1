@@ -55,7 +55,7 @@ public partial class UpwardsStream : Area2D
 	public void AddToggle()
 	{
 		togglesActive += 1;
-		if (togglesActive == TogglesRequired)
+		if (togglesActive >= TogglesRequired)
 		{
 			IsStreamActive = true;
 			particles.Emitting = true;

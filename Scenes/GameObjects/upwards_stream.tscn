@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brq8obvotfw76" path="res://Assets/Sprites/airtoggle.png" id="2_r1xky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyd1a"]
-size = Vector2(62, 957.5)
+size = Vector2(62, 1420.25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1rpv"]
 atlas = ExtResource("2_r1xky")
@@ -40,8 +40,8 @@ shape = SubResource("ConvexPolygonShape2D_r1xky")
 position = Vector2(0, 181)
 rotation = -1.5707964
 emitting = false
-amount = 50
-lifetime = 2.0
+amount = 100
+lifetime = 4.0
 emission_shape = 3
 emission_rect_extents = Vector2(0.915, 30.38)
 spread = 0.0
