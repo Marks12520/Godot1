@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://bemgd3w7oa23h" path="res://Assets/Tilesets/Platform.tres" id="2_o7bax"]
 [ext_resource type="TileSet" uid="uid://m5rkg0o30k4y" path="res://Assets/Tilesets/Effectors.tres" id="3_flysx"]
 [ext_resource type="TileSet" uid="uid://dr2h5xnel4dks" path="res://Assets/Tilesets/Ladder.tres" id="4_0jhw5"]
-[ext_resource type="TileSet" uid="uid://cqu5e3jgxli3s" path="res://Assets/Tilesets/Decorations.tres" id="5_eqosv"]
+[ext_resource type="TileSet" uid="uid://cqu5e3jgxli3s" path="res://Assets/Tilesets/decorations.tres" id="5_eqosv"]
 [ext_resource type="TileSet" uid="uid://bleedx7bujs2p" path="res://Assets/Tilesets/Dangers.tres" id="6_6a7cf"]
 [ext_resource type="PackedScene" uid="uid://bo0pwsa6hw5ue" path="res://Scenes/GameObjects/player.tscn" id="7_hpjhc"]
 [ext_resource type="PackedScene" uid="uid://cuf7yvljoi8on" path="res://Scenes/Levels/cameras.tscn" id="8_pyd1a"]
