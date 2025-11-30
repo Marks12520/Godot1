@@ -67,7 +67,7 @@ label_settings = SubResource("LabelSettings_fllhd")
 metadata/_edit_use_anchors_ = true
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(16, 727)
+position = Vector2(22, 832)
 scale = Vector2(4.832311, 4.8134)
 texture_normal = SubResource("AtlasTexture_l7fx2")
 passby_press = true
@@ -75,7 +75,7 @@ action = "Move_left"
 visibility_mode = 1
 
 [node name="TouchScreenButton2" type="TouchScreenButton" parent="."]
-position = Vector2(358, 732)
+position = Vector2(193, 831.00006)
 scale = Vector2(4.832106, 4.8131957)
 texture_normal = SubResource("AtlasTexture_lntr4")
 passby_press = true
@@ -83,7 +83,7 @@ action = "Move_right"
 visibility_mode = 1
 
 [node name="TouchScreenButton3" type="TouchScreenButton" parent="."]
-position = Vector2(183, 901)
+position = Vector2(1699, 910)
 scale = Vector2(4.8323216, 4.8134103)
 texture_normal = SubResource("AtlasTexture_4do7r")
 passby_press = true
@@ -91,7 +91,7 @@ action = "Move_down"
 visibility_mode = 1
 
 [node name="TouchScreenButton4" type="TouchScreenButton" parent="."]
-position = Vector2(190, 559)
+position = Vector2(1697, 570.00006)
 scale = Vector2(4.8320847, 4.8131742)
 texture_normal = SubResource("AtlasTexture_u6tpt")
 passby_press = true
@@ -99,7 +99,7 @@ action = "Move_up"
 visibility_mode = 1
 
 [node name="TouchScreenButton5" type="TouchScreenButton" parent="."]
-position = Vector2(1702, 863)
+position = Vector2(1696.0001, 741)
 scale = Vector2(4.8325663, 4.813654)
 texture_normal = SubResource("AtlasTexture_3nqqn")
 passby_press = true

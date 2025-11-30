@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bwvxjvdcb0j4"]
+[gd_scene load_steps=16 format=4 uid="uid://bwvxjvdcb0j4"]
 
 [ext_resource type="TileSet" uid="uid://pqkqv44ukoj6" path="res://Assets/Tilesets/Background.tres" id="1_ryjqc"]
 [ext_resource type="PackedScene" uid="uid://cbyfymmc32vnj" path="res://Scenes/GameObjects/falling_spike.tscn" id="2_xe7un"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://bdrux5mgevle4" path="res://Scenes/GameObjects/side_one_way.tscn" id="14_4xs7e"]
 [ext_resource type="PackedScene" uid="uid://sejn5li676gi" path="res://Scenes/Menus/game_menu.tscn" id="15_j5o2p"]
 [ext_resource type="PackedScene" uid="uid://ww7qrrq562qc" path="res://Scenes/Menus/fade.tscn" id="16_xe7un"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8r8ce"]
+size = Vector2(3169, 1164)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqhku"]
 size = Vector2(39, 63.5)
@@ -69,10 +72,16 @@ deathSpawn = NodePath("../Spawns/DeathSpawn")
 fadeAnimation = NodePath("../CanvasLayer/Fade")
 cameras = NodePath("../Cameras")
 
-[node name="Cameras" parent="." node_paths=PackedStringArray("followTarget", "limitTilemap") instance=ExtResource("9_8r8ce")]
+[node name="Cameras" parent="." node_paths=PackedStringArray("followTarget", "limitShape") instance=ExtResource("9_8r8ce")]
 followTarget = NodePath("../Player")
-limitTilemap = NodePath("../TilemapLayers/PlatformLayer")
-limitOffset = Vector4i(45, 150, 15, 15)
+limitShape = [NodePath("Bounds/Bound 1")]
+
+[node name="Bounds" type="Node" parent="Cameras"]
+
+[node name="Bound 1" type="CollisionShape2D" parent="Cameras/Bounds"]
+position = Vector2(-393.5, -608)
+shape = SubResource("RectangleShape2D_8r8ce")
+debug_color = Color(1, 1, 1, 0)
 
 [node name="Collectibles" type="Node" parent="."]
 
